@@ -5,6 +5,7 @@ from langchain_core.runnables.config import RunnableConfig
 from langfuse.langchain import CallbackHandler
 from streamlit_chatbox import ChatBox, Markdown
 
+from env import env
 from graph import OpenAIModelConfig, State, checkpointer, graph
 from utils.langfuse import langfuse
 from utils.message import StreamMessage
@@ -16,9 +17,11 @@ async def render_streamlit():
     # Sidebar for OpenAI-compatible API settings
     with st.sidebar:
         st.sidebar.header("OpenAI API Settings")
-        api_key = st.sidebar.text_input("API Key", type="password")
-        base_url = st.sidebar.text_input("Base URL", value="https://api.openai.com/v1")
-        model_name = st.sidebar.text_input("Model Name", value="gpt-4o")
+        api_key = st.sidebar.text_input(
+            "API Key", type="password", value=env.OPENAI_API_KEY
+        )
+        base_url = st.sidebar.text_input("Base URL", value=env.OPENAI_BASE_URL)
+        model_name = st.sidebar.text_input("Model Name", value=env.OPENAI_MODEL_NAME)
 
         st.sidebar.info(
             "You can use any API that is compatible with the OpenAI API standard. "
