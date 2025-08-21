@@ -2,9 +2,11 @@ import asyncio
 
 import streamlit as st
 from langchain_core.runnables.config import RunnableConfig
+from langfuse.langchain import CallbackHandler
 from streamlit_chatbox import ChatBox, Markdown
 
 from graph import OpenAIModelConfig, State, checkpointer, graph
+from utils.langfuse import langfuse
 from utils.message import StreamMessage
 
 THREAD_ID = "1"
@@ -43,7 +45,10 @@ async def render_streamlit():
         ),
     )
 
-    config = RunnableConfig(configurable={"thread_id": THREAD_ID})
+    config = RunnableConfig(
+        configurable={"thread_id": THREAD_ID},
+        callbacks=[CallbackHandler()] if langfuse.auth_check() else [],
+    )
 
     if query := st.chat_input(
         "input your question here", disabled=not api_key or not model_name

@@ -2,6 +2,7 @@ from datetime import datetime
 
 from pydantic_ai import Agent, Tool
 
+from utils.langfuse import langfuse
 from utils.model import OpenAIModelConfig, create_openai_model
 
 
@@ -23,4 +24,6 @@ def create_chat_agent(config: OpenAIModelConfig) -> Agent:
         model=model,
         instructions=instructions,
         tools=[Tool(get_current_time, takes_ctx=False)],
+        instrument=langfuse.auth_check(),
+        name="Chat Agent",
     )
