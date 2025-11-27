@@ -20,8 +20,13 @@ class OpenAISettings(BaseSettings):
     class Config:
         env_file = ".env"
 
+class LanggraphSettings(BaseSettings):
+    LANGSMITH_API_KEY: Optional[str] = None
 
-class Settings(LangfuseSettings, OpenAISettings):
+    class Config:
+        env_file = ".env"
+
+class Settings(LangfuseSettings, OpenAISettings, LanggraphSettings):
     pass
 
 

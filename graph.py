@@ -139,5 +139,5 @@ graph_builder.add_node("chat", chat)
 graph_builder.add_edge(START, "chat")
 graph_builder.add_edge("chat", END)
 
-checkpointer = InMemorySaver()
-graph = graph_builder.compile(checkpointer=checkpointer, name="Chat Graph")
+# checkpointer = InMemorySaver()
+graph = graph_builder.compile(name="Chat Graph")
