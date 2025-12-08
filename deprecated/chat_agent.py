@@ -2,8 +2,8 @@ from datetime import datetime
 
 from pydantic_ai import Agent, Tool
 
-from utils.langfuse import langfuse
-from utils.model import OpenAIModelConfig, create_openai_model
+from deprecated.langfuse import langfuse
+from agents.utils.model import OpenAIModelConfig, create_openai_model
 
 
 def get_current_time() -> str:

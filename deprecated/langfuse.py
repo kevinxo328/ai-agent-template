@@ -1,6 +1,6 @@
 from langfuse import Langfuse
 
-from env import env
+from agents.demo.env import env
 
 langfuse = Langfuse(
     secret_key=env.LANGFUSE_SECRET_KEY,

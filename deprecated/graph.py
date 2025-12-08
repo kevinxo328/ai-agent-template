@@ -16,9 +16,9 @@ from pydantic_ai.messages import (
     ToolCallPartDelta,
 )
 
-from agents.chat_agent import create_chat_agent
-from utils.message import StreamMessage, UserMessage, to_model_message
-from utils.model import OpenAIModelConfig
+from deprecated.chat_agent import create_chat_agent
+from deprecated.message import StreamMessage, UserMessage, to_model_message
+from agents.utils.model import OpenAIModelConfig
 
 
 class State(TypedDict):

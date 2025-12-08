@@ -5,10 +5,10 @@ from langchain_core.runnables.config import RunnableConfig
 from langfuse.langchain import CallbackHandler
 from streamlit_chatbox import ChatBox, Markdown
 
-from env import env
-from graph import OpenAIModelConfig, State, checkpointer, graph
-from utils.langfuse import langfuse
-from utils.message import StreamMessage
+from agents.demo.env import env
+from deprecated.graph import OpenAIModelConfig, State, checkpointer, graph
+from deprecated.langfuse import langfuse
+from deprecated.message import StreamMessage
 
 THREAD_ID = "1"
 
